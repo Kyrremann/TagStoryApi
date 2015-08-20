@@ -1,0 +1,1 @@
+web: bundle exec ruby rackup config.ru -s Puma -p $PORT
