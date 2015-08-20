@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 
 require_relative 'lib/StoryHandler.rb'
+require_relative 'lib/Errors.rb'
 
 require 'securerandom'
 
@@ -10,40 +12,44 @@ unless CLOUDANT_URL = ENV['CLOUDANT_URL']
   raise "You must specify the CLOUDANT_URL env variable"
 end
 
-DEFAULT_ERROR = '{"error"=>"not_found", "reason"=>"missing"}'
-
-class Api < Hobbit::Base
+class Api < Roda
   use Rack::Session::Cookie, secret: SecureRandom.hex(64)
   use Rack::ShowExceptions
   use Rack::Protection
 
-  get '/' do
-    'Hello world!'
-  end
+  route do | r |
 
-  get '/stories' do
-    response['Content-Type'] = "application/json; charset=utf-8"
-    get_stories
-  end
+    # GET /
+    r.root do
+      'Hello world!'
+    end
 
-  get '/stories/:id/:key' do
-    response['Content-Type'] = "application/json; charset=utf-8"
-    params = request.params
-    get_story params[:id], params[:key]
-  end
+    # /stories branch
+    r.on 'stories' do
+      response['Content-Type'] = "application/json; charset=utf-8"
 
-  get '/stories/:id' do
-    response['Content-Type'] = "application/json; charset=utf-8"
-    get_story request.params[:id]
-  end
+      r.get ':id/:key' do | id, key |
+        get_key_from_story(id, key).to_json
+      end
 
-  get '/statistics' do
-    response['Content-Type'] = "application/json; charset=utf-8"
-    response['body'] = DEFAULT_ERROR
-  end
+      r.get ':id' do | id |
+        get_story(id).to_json
+      end
 
-  get '/statistics/:user' do
-    response['Content-Type'] = "application/json; charset=utf-8"
-    DEFAULT_ERROR
-  end 
+      # GET /stories
+      r.get do
+        get_stories.to_json
+      end
+    end
+
+    r.on "statistics" do
+      response['Content-Type'] = "application/json; charset=utf-8"
+
+      r.get ':user' do | user |
+      end
+
+      r.get do
+      end
+    end
+  end
 end

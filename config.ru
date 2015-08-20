@@ -1,3 +1,3 @@
 require './app'
 
-run Api.new
+run Api.app

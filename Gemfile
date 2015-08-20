@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby '2.2.0'
 
-gem 'hobbit', '~> 0.6'
+gem 'roda', '~> 2.5'
 gem 'json', '~> 1.8'
 gem 'uuid', '~> 2.3'
 gem 'puma', '~> 2.11'
