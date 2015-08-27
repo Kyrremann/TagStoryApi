@@ -14,11 +14,14 @@ class Api < Roda
   use Rack::ShowExceptions
   use Rack::Protection
 
+  plugin :render, :engine => 'haml', :template_opts => { :default_encoding => 'UTF-8' }
+  plugin :static, [ '/images']
+
   route do | r |
 
     # GET /
     r.root do
-      'Hello world!'
+      render("index")
     end
 
     # /stories branch
