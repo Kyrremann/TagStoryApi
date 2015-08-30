@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'rubygems'
+require 'tilt/haml'
 require 'bundler/setup'
 Bundler.require(:default)
 

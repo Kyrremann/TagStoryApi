@@ -1,3 +1,5 @@
+require './helpers/v1_helpers.rb'
+
 Api.route('v1') do | r |
 
   # /stories branch
@@ -5,18 +7,19 @@ Api.route('v1') do | r |
     response['Content-Type'] = "application/json; charset=utf-8"
 
     r.get ':id/:key' do | id, key |
-      http = Keen.publish_async("story_key", { :source => r.params["source"], :story_id => id, :key => key})
+      http = Keen.publish_async("story_key", retrieve_keen_params(r.params))
       get_key_from_story(id, key).to_json
     end
 
     r.get ':id' do | id |
-      http = Keen.publish_async("story", { :source => r.params["source"], :story_id => id, :update => r.params["update"] })
+      http = Keen.publish_async("story", retrieve_keen_params(r.params))
       get_story(id).to_json
     end
 
     # GET /stories
     r.get do
-      http = Keen.publish_async("list_stories", { :source => r.params["source"] })
+      response['Access-Control-Allow-Origin'] = 'http://tagstory.no'
+      http = Keen.publish_async("list_stories", retrieve_keen_params(r.params))
       get_stories.to_json
     end
   end
