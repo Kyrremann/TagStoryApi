@@ -19,3 +19,12 @@ def get_stories_from_cloudant
     JSON.parse error.response
   end
 end
+
+def save_to_cloudant(json)
+  begin
+    @respons =  JSON.parse(RestClient.post("#{CLOUDANT_URL}/#{STORIES_TABLE}", json, {:content_type => :json, :accept => :json}))
+    puts @respons
+  rescue => error
+    p error
+  end
+end
