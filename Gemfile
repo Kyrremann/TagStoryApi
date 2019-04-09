@@ -1,10 +1,10 @@
 source "https://rubygems.org"
-ruby '2.3.6'
+ruby '2.4.6'
 
 gem 'roda', '~> 3.6'
 gem 'json', '~> 2.1'
 gem 'uuid', '~> 2.3', '>= 2.3.8'
-gem 'puma', '~> 3.11', '>= 3.11.3'
+gem 'puma', '~> 3.12', '>= 3.11.3'
 gem 'rack-protection', '~> 2.0', '>= 2.0.1', :require => 'rack/protection'
 gem 'rest-client', '~> 2.0', '>= 2.0.2', :require => 'rest_client'
 gem 'keen', '~> 1.1', '>= 1.1.1'

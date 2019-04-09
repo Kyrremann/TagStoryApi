@@ -1,10 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     cookiejar (0.3.3)
-    domain_name (0.5.20170404)
+    domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     em-http-request (1.1.5)
       addressable (>= 2.3.4)
@@ -14,43 +14,43 @@ GEM
       http_parser.rb (>= 0.6.0)
     em-socksify (0.3.2)
       eventmachine (>= 1.0.0.beta.4)
-    eventmachine (1.2.5)
+    eventmachine (1.2.7)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
-    json (2.1.0)
+    json (2.2.0)
     keen (1.1.1)
       addressable (~> 2.5)
       multi_json (~> 1.12)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
-    mime-types (3.1)
+    mime-types (3.2.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types-data (3.2019.0331)
     minitest (5.11.3)
     multi_json (1.13.1)
     netrc (0.11.0)
-    public_suffix (3.0.2)
-    puma (3.11.3)
-    rack (2.0.4)
-    rack-protection (2.0.1)
+    public_suffix (3.0.3)
+    puma (3.12.1)
+    rack (2.0.7)
+    rack-protection (2.0.5)
       rack
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    roda (3.6.0)
+    roda (3.18.0)
       rack
     systemu (2.6.5)
-    temple (0.8.0)
-    tilt (2.0.8)
+    temple (0.8.1)
+    tilt (2.0.9)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    uuid (2.3.8)
+    uuid (2.3.9)
       macaddr (~> 1.0)
 
 PLATFORMS
@@ -62,7 +62,7 @@ DEPENDENCIES
   json (~> 2.1)
   keen (~> 1.1, >= 1.1.1)
   minitest (~> 5.11, >= 5.11.3)
-  puma (~> 3.11, >= 3.11.3)
+  puma (~> 3.12, >= 3.11.3)
   rack-protection (~> 2.0, >= 2.0.1)
   rest-client (~> 2.0, >= 2.0.2)
   roda (~> 3.6)
@@ -70,7 +70,7 @@ DEPENDENCIES
   uuid (~> 2.3, >= 2.3.8)
 
 RUBY VERSION
-   ruby 2.3.6p384
+   ruby 2.4.6p354
 
 BUNDLED WITH
-   1.16.1
+   1.16.6
